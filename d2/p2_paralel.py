@@ -11,8 +11,8 @@ def check_palindromes(id: int):
     n = len(id_string)
     if n <= 1:
         return 0
-    for l in range(1, n // 2 + 1):
-        if n % l == 0 and id_string == id_string[:l] * (n // l):
+    for pattern_len in range(1, n // 2 + 1):
+        if n % pattern_len == 0 and id_string == id_string[:pattern_len] * (n // pattern_len):
             return int(id_string)
     return 0
 
