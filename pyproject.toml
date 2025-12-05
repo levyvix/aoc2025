@@ -4,4 +4,9 @@ version = "0.1.0"
 description = "Advent of code 2025"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = ["icecream>=2.1.8", "pathos>=0.3.4"]
+dependencies = [
+    "advent-of-code-data>=2.1.0",
+    "icecream>=2.1.8",
+    "pathos>=0.3.4",
+    "requests>=2.32.5",
+]
