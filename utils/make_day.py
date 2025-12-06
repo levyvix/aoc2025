@@ -5,7 +5,7 @@ from pathlib import Path
 args = sys.argv[1:]
 day_number = 0
 if len(args) == 0:
-    day_number = datetime.date.today().strftime("%d")
+    day_number = datetime.date.today().strftime("%d").removeprefix("0")
 else:
     day_number = args[0]
 
