@@ -39,3 +39,4 @@ for c in range(col_number, -1, -1):
         num_list = []
         last = False
 ic(total)
+
