@@ -3,10 +3,11 @@ import sys
 from pathlib import Path
 
 args = sys.argv[1:]
+day_number = 0
 if len(args) == 0:
     day_number = datetime.date.today().strftime("%d")
-
-day_number = args[0]
+else:
+    day_number = args[0]
 
 file_content = """from icecream import ic
 from pathlib import Path
