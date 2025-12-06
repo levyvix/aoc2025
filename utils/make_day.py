@@ -1,0 +1,28 @@
+import datetime
+import sys
+from pathlib import Path
+
+args = sys.argv[1:]
+if len(args) == 0:
+    day_number = datetime.date.today().strftime("%d")
+
+day_number = args[0]
+
+file_content = """from icecream import ic
+from pathlib import Path
+
+file_name = "t.in"
+"""
+
+folder_path = Path(__file__).parent.parent / f"d{day_number}"
+folder_path.mkdir(parents=True, exist_ok=True)
+
+# create p1
+p1 = folder_path / "p1.py"
+p1.touch()
+p1.write_text(file_content)
+
+# create p2
+p2 = folder_path / "p2.py"
+p2.touch()
+p2.write_text(file_content)
