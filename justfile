@@ -1,3 +1,4 @@
+DAY := ''
 md DAY:
   uv run utils/make_day.py {{DAY}}
   uv run aocd 2025 {{DAY}} > d{{DAY}}/r.in
