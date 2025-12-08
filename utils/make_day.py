@@ -15,6 +15,7 @@ def main():
 from pathlib import Path
 
 file_name = "t.in"
+content = (Path(__file__).parent / file_name).read_text()
     """
 
     folder_path = Path(__file__).parent.parent / f"d{day_number}"
