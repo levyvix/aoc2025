@@ -12,9 +12,9 @@ def main():
         day_number = args[0]
 
     file_content = """from icecream import ic
-    from pathlib import Path
+from pathlib import Path
 
-    file_name = "t.in"
+file_name = "t.in"
     """
 
     folder_path = Path(__file__).parent.parent / f"d{day_number}"
