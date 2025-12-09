@@ -1,9 +1,8 @@
 from icecream import ic
-from pathlib import Path
 from pathos.multiprocessing import ProcessPool
 
-path = Path(__file__).parent / "real.txt"
-ranges = (r.split("-") for r in path.read_text().strip().split(","))
+content = open(0).read()
+ranges = (r.split("-") for r in content.strip().split(","))
 
 
 def check_palindromes(id: int):
@@ -12,7 +11,9 @@ def check_palindromes(id: int):
     if n <= 1:
         return 0
     for pattern_len in range(1, n // 2 + 1):
-        if n % pattern_len == 0 and id_string == id_string[:pattern_len] * (n // pattern_len):
+        if n % pattern_len == 0 and id_string == id_string[:pattern_len] * (
+            n // pattern_len
+        ):
             return int(id_string)
     return 0
 

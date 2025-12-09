@@ -1,9 +1,7 @@
 from icecream import ic
-from pathlib import Path
 
-path = Path(__file__).parent / "real.txt"
-
-ranges = path.read_text().split(",")
+content = open(0).read()
+ranges = content.split(",")
 
 
 def check_palindromes(id: str):

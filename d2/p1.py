@@ -1,9 +1,8 @@
 from icecream import ic
-from pathlib import Path
 
-path = Path(__file__).parent / "real.txt"
+content = open(0).read()
 
-ranges = path.read_text().split(",")
+ranges = content.split(",")
 
 invalidIds = 0
 for r in ranges:

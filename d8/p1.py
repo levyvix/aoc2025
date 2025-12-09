@@ -1,7 +1,4 @@
-from pathlib import Path
-
-file_name = "r.in"
-content = (Path(__file__).parent / file_name).read_text()
+content = open(0).read()
 boxes = [l.split(",") for l in content.splitlines()]
 
 

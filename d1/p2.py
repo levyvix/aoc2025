@@ -3,7 +3,7 @@ from icecream import ic
 
 
 def main():
-    lines = open(0).readlines()
+    lines = open(0).read().splitlines()
 
     nzero = 0
     curr = 50

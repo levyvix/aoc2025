@@ -1,9 +1,6 @@
-from pathlib import Path
 from icecream import ic
 
-grid = [
-    list(l.strip()) for l in (Path(__file__).parent / "r.in").read_text().splitlines()
-]
+grid = [list(line.strip()) for line in open(0).read().splitlines()]
 row_len = len(grid)
 col_len = len(grid[0])
 

@@ -1,9 +1,7 @@
 from functools import cache
 from icecream import ic
-from pathlib import Path
 
-file_name = "r.in"
-grid = [line for line in (Path(__file__).parent / file_name).read_text().splitlines()]
+grid = [line for line in open(0).read().splitlines()]
 # find S
 S = (0, 0)
 for r, rows in enumerate(grid):

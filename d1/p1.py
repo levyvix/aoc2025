@@ -2,8 +2,7 @@ from icecream import ic
 
 
 def main():
-    with open("r1.txt") as f:
-        lines = f.readlines()
+    lines = open(0).read().splitlines()
     nzero = 0
     curr = 50
     for line in lines:

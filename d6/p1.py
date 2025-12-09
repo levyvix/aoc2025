@@ -1,8 +1,6 @@
 from icecream import ic
-from pathlib import Path
 
-file_name = "r.in"
-contents = (Path(__file__).parent / file_name).read_text().strip().splitlines()
+contents = open(0).read().strip().splitlines()
 clean_cont = []
 for c in contents:
     clean_cont.append(c.strip().split())

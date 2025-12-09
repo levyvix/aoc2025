@@ -1,8 +1,6 @@
 from icecream import ic
-from pathlib import Path
 
-file_name = "real.txt"
-contents = (Path(__file__).parent / file_name).read_text().splitlines()
+contents = open(0).read().splitlines()
 
 jolts = []
 for b in contents:

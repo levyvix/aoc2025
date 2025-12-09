@@ -1,8 +1,6 @@
 from icecream import ic
-from pathlib import Path
 
-file_name = "r.in"
-contents = (Path(__file__).parent / file_name).read_text().splitlines()
+contents = open(0).read().splitlines()
 line_number = len(contents)
 col_number = len(contents[0]) - 1
 contents, ops = [c for c in contents], contents[-1].split()

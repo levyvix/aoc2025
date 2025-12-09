@@ -1,8 +1,6 @@
 from icecream import ic
-from pathlib import Path
 
-file_name = "r.in"
-ranges, products = (Path(__file__).parent / file_name).read_text().split("\n\n")
+ranges, products = open(0).read().split("\n\n")
 ranges = [r for r in ranges.splitlines()]
 products = [p for p in products.splitlines()]
 

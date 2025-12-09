@@ -1,16 +1,7 @@
-from pathlib import Path
-
 from icecream import ic
 
-curr_dir = Path(__file__).parent
-r = True
-
-if r:
-    file = curr_dir / "real.txt"
-else:
-    file = curr_dir / "test.txt"
-
-batteries = [line for line in file.read_text().strip().splitlines()]
+content = open(0).read()
+batteries = [line for line in content.strip().splitlines()]
 
 max_b = 0
 for b in batteries:
