@@ -15,7 +15,7 @@ def main():
 from pathlib import Path
 
 file_name = "t.in"
-content = (Path(__file__).parent / file_name).read_text()
+content = open(0).read()
     """
 
     folder_path = Path(__file__).parent.parent / f"d{day_number}"
@@ -29,10 +29,22 @@ content = (Path(__file__).parent / file_name).read_text()
     p1.touch()
     p1.write_text(file_content)
 
-    # create p2
-    p2 = folder_path / "p2.py"
-    p2.touch()
-    p2.write_text(file_content)
+    # create justfile
+    justfile_content = """t1:
+uv run p1.py < t.in
+
+r1:
+  uv run p1.py < r.in
+
+t2:
+  uv run p2.py < t.in
+
+r2:
+  uv run p2.py < r.in
+"""
+    jstfile = folder_path / "justfile"
+    jstfile.touch()
+    jstfile.write_text(justfile_content)
 
 
 if __name__ == "__main__":
