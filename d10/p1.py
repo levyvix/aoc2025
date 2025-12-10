@@ -21,21 +21,17 @@ def solve_machine(lights_pattern, buttons):
         matrix.append(row)
 
     # Gaussian elimination over GF(2)
-    pivot_col = 0
-    for row_idx in range(n_lights):
-        if pivot_col >= n_buttons:
-            break
-
+    pivot_cols = []
+    row_idx = 0
+    for col_idx in range(n_buttons):
         # Find pivot
         pivot_row = None
         for i in range(row_idx, n_lights):
-            if matrix[i][pivot_col] == 1:
+            if matrix[i][col_idx] == 1:
                 pivot_row = i
                 break
 
         if pivot_row is None:
-            pivot_col += 1
-            row_idx -= 1
             continue
 
         # Swap rows
@@ -43,37 +39,47 @@ def solve_machine(lights_pattern, buttons):
 
         # Eliminate
         for i in range(n_lights):
-            if i != row_idx and matrix[i][pivot_col] == 1:
+            if i != row_idx and matrix[i][col_idx] == 1:
                 for j in range(n_buttons + 1):
                     matrix[i][j] ^= matrix[row_idx][j]
 
-        pivot_col += 1
+        pivot_cols.append(col_idx)
+        row_idx += 1
 
-    # Back substitution / check for solutions
-    solution = [0] * n_buttons
+    # Check for inconsistencies
+    for i in range(row_idx, n_lights):
+        if matrix[i][n_buttons] == 1:
+            # Inconsistent system
+            return -1
 
-    for row_idx in range(n_lights - 1, -1, -1):
-        # Find the leading 1 in this row
-        leading_col = None
-        for col_idx in range(n_buttons):
-            if matrix[row_idx][col_idx] == 1:
-                leading_col = col_idx
-                break
+    # Identify free variables
+    free_vars = []
+    for col_idx in range(n_buttons):
+        if col_idx not in pivot_cols:
+            free_vars.append(col_idx)
 
-        if leading_col is None:
-            # This row is all zeros (except possibly the augmented column)
-            if matrix[row_idx][n_buttons] == 1:
-                # Inconsistent system
-                return -1
-            continue
+    # Try all assignments of free variables
+    min_presses = float('inf')
 
-        # Set the solution for this variable
-        val = matrix[row_idx][n_buttons]
-        for col_idx in range(leading_col + 1, n_buttons):
-            val ^= (matrix[row_idx][col_idx] & solution[col_idx])
-        solution[leading_col] = val
+    for mask in range(1 << len(free_vars)):
+        solution = [0] * n_buttons
 
-    return sum(solution)
+        # Set free variables
+        for i, var in enumerate(free_vars):
+            solution[var] = (mask >> i) & 1
+
+        # Back substitution for dependent variables
+        for i in range(len(pivot_cols) - 1, -1, -1):
+            col = pivot_cols[i]
+            val = matrix[i][n_buttons]
+            for j in range(col + 1, n_buttons):
+                val ^= (matrix[i][j] & solution[j])
+            solution[col] = val
+
+        presses = sum(solution)
+        min_presses = min(min_presses, presses)
+
+    return min_presses if min_presses != float('inf') else 0
 
 # Read input
 content = open(0).read().strip()

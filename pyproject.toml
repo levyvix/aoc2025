@@ -7,6 +7,9 @@ requires-python = ">=3.12"
 dependencies = [
     "advent-of-code-data>=2.1.0",
     "icecream>=2.1.8",
+    "numpy>=2.3.5",
     "pathos>=0.3.4",
+    "pulp>=3.3.0",
     "requests>=2.32.5",
+    "scipy>=1.16.3",
 ]
