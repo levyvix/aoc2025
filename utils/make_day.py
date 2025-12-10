@@ -5,11 +5,11 @@ from pathlib import Path
 
 def main():
     args = sys.argv[1:]
-    day_number = 0
-    if len(args) == 0 or args[0] == "":
-        day_number = datetime.date.today().strftime("%d").removeprefix("0")
-    else:
-        day_number = args[0]
+    day_number = (
+        args[0]
+        if len(args) > 0
+        else datetime.date.today().strftime("%d").removeprefix("0")
+    )
 
     file_content = """from icecream import ic
 
