@@ -12,9 +12,7 @@ def main():
         day_number = args[0]
 
     file_content = """from icecream import ic
-from pathlib import Path
 
-file_name = "t.in"
 content = open(0).read()
     """
 
@@ -31,7 +29,7 @@ content = open(0).read()
 
     # create justfile
     justfile_content = """t1:
-uv run p1.py < t.in
+  uv run p1.py < t.in
 
 r1:
   uv run p1.py < r.in
