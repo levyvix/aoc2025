@@ -1,4 +1,7 @@
 from icecream import ic
+import sys
+
+ic.configureOutput(outputFunction=lambda s: print(s, file=sys.stderr))
 
 grid = [list(line.strip()) for line in open(0).read().splitlines()]
 row_len = len(grid)

@@ -1,5 +1,8 @@
 from collections import deque
 from icecream import ic
+import sys
+
+ic.configureOutput(outputFunction=lambda s: print(s, file=sys.stderr))
 
 grid = [line for line in open(0).read().splitlines()]
 # find S

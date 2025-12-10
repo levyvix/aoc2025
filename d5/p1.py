@@ -1,5 +1,8 @@
 from icecream import ic
 from pathlib import Path
+import sys
+
+ic.configureOutput(outputFunction=lambda s: print(s, file=sys.stderr))
 
 ranges, products = open(0).read().split("\n\n")
 # [[3,5], ...]

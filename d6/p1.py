@@ -1,4 +1,7 @@
 from icecream import ic
+import sys
+
+ic.configureOutput(outputFunction=lambda s: print(s, file=sys.stderr))
 
 contents = open(0).read().strip().splitlines()
 clean_cont = []

@@ -1,4 +1,7 @@
 from icecream import ic
+import sys
+
+ic.configureOutput(outputFunction=lambda s: print(s, file=sys.stderr))
 
 ranges, products = open(0).read().split("\n\n")
 ranges = [r for r in ranges.splitlines()]

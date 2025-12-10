@@ -1,4 +1,7 @@
 from icecream import ic
+import sys
+
+ic.configureOutput(outputFunction=lambda s: print(s, file=sys.stderr))
 
 content = open(0).read()
 batteries = [line for line in content.strip().splitlines()]
