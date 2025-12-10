@@ -9,3 +9,62 @@ t2:
 
 r2:
   uv run p2.py < r.in
+
+submit1:
+  #!/usr/bin/env python3
+  import requests
+  import os
+
+  session_id = os.environ.get('AOC_SESSION')
+  if not session_id:
+    print("Error: AOC_SESSION environment variable not set")
+    exit(1)
+
+  answer = 505
+  response = requests.post(
+    "https://adventofcode.com/2025/day/10/answer",
+    cookies={"session": session_id},
+    data={"level": 1, "answer": answer}
+  )
+
+  if "That's the right answer" in response.text:
+    print(f"✅ Part 1 correct! Answer: {answer}")
+  elif "already complete it" in response.text:
+    print(f"✅ Part 1 already completed! Answer: {answer}")
+  elif "too high" in response.text:
+    print(f"❌ Part 1 too high: {answer}")
+  elif "too low" in response.text:
+    print(f"❌ Part 1 too low: {answer}")
+  else:
+    print(f"⚠️  Unexpected response for Part 1: {answer}")
+
+submit2:
+  #!/usr/bin/env python3
+  import requests
+  import os
+
+  session_id = os.environ.get('AOC_SESSION')
+  if not session_id:
+    print("Error: AOC_SESSION environment variable not set")
+    exit(1)
+
+  answer = 20002
+  response = requests.post(
+    "https://adventofcode.com/2025/day/10/answer",
+    cookies={"session": session_id},
+    data={"level": 2, "answer": answer}
+  )
+
+  if "That's the right answer" in response.text:
+    print(f"✅ Part 2 correct! Answer: {answer}")
+  elif "already complete it" in response.text:
+    print(f"✅ Part 2 already completed! Answer: {answer}")
+  elif "too high" in response.text:
+    print(f"❌ Part 2 too high: {answer}")
+  elif "too low" in response.text:
+    print(f"❌ Part 2 too low: {answer}")
+  else:
+    print(f"⚠️  Unexpected response for Part 2: {answer}")
+
+submit: submit1 submit2
+  @echo "✨ Both answers submitted!"
